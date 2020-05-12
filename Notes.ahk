@@ -48,3 +48,24 @@ Additional thoughts
 [No Link](Evernote link)
 )
 return
+
+::inote::
+
+FormatTime, TimeOut, , yyyyMMddHHmmss
+Send, 
+(
+@(Someday/MaybeNever)[idea, No Tags, No Existing Notes Link, No Reference Links]
+{#}{#}{#} %TimeOut% - Data Note Taken - Concept/Idea
+
+Concept/Idea: description in actual sentences
+Additional thoughts
+
+{#}{#}{#}{#} Links To Existing Notes
+[No Link](Evernote link)
+
+{#}{#}{#}{#} References
+[No Web Link](http://weblink.com)
+[No Reference](http://evernotelink)
+(Bullet Journal Note Book, Page Number)
+)
+return
