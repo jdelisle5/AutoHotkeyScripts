@@ -39,11 +39,14 @@ Send,
 return
 
 ::wnote::
+
+InputBox, thought, Thought/Feeling/Side-Effect, {Enter}
 FormatTime, TimeOut, , yyyyMMddHHmmss
+FormatTime, DateNoteTaken, , yyyyMMdd
 Send, 
 (
 @(Book of Well-being)[No Tags, No Existing Notes Link]
-{#}{#}{#} %TimeOut% - Date Note Taken - Thought/Feeling/Side-Effect
+{#}{#}{#} %TimeOut% - %DateNoteTaken% - %thought%
 Note
 Additional thoughts
 
