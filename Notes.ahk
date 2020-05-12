@@ -4,14 +4,16 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ::knote::
+InputBox, Concept, Concept, {Enter}
 
 FormatTime, TimeOut, , yyyyMMddHHmmss
+FormatTime, DateNoteTaken, , yyyyMMdd
 Send, 
 (
 @(Book of Knowledge)[No Tags, No Existing Notes Link, No Reference Links]
-{#}{#}{#} %TimeOut% - Data Note Taken - Concept/Idea
+{#}{#}{#} %TimeOut% - %DateNoteTaken% - %Concept%
 
-Concept/Idea: description in actual sentences
+%Concept%: description in actual sentences
 Additional thoughts
 
 {#}{#}{#}{#} Links To Existing Notes
@@ -25,10 +27,11 @@ Additional thoughts
 return
 
 ::ref::
+InputBox, Title, Title, {Enter}
 Send, 
 (
 @(References)[No Tags]
-{#}{#}{#} Title
+{#}{#}{#} %Title%
 
 {#}{#}{#}{#} Citation:
 
@@ -51,13 +54,16 @@ return
 
 ::inote::
 
+InputBox, Title, Idea , {Enter}
+
 FormatTime, TimeOut, , yyyyMMddHHmmss
+FormatTime, DateNoteTaken, , yyyyMMdd
 Send, 
 (
-@(Someday/MaybeNever)[idea, No Tags, No Existing Notes Link, No Reference Links]
-{#}{#}{#} %TimeOut% - Data Note Taken - Concept/Idea
+@(SomedayMaybeNever)[idea, No Tags, No Existing Notes Link, No Reference Links]
+{#}{#}{#} %TimeOut% - %DateNoteTaken% - %Title%
 
-Concept/Idea: description in actual sentences
+%Title%: description in actual sentences
 Additional thoughts
 
 {#}{#}{#}{#} Links To Existing Notes
