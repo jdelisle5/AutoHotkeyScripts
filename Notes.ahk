@@ -8,7 +8,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 FormatTime, TimeOut, , yyyyMMddHHmmss
 Send, 
 (
-@(Book of Knowledge)[No Tags, No Existing Notes Link]
+@(Book of Knowledge)[No Tags, No Existing Notes Link, No Reference Links]
 {#}{#}{#} %TimeOut% - Data Note Taken - Concept/Idea
 
 Concept/Idea: description in actual sentences
@@ -39,7 +39,7 @@ return
 FormatTime, TimeOut, , yyyyMMddHHmmss
 Send, 
 (
-@(Book of Well-being)[No Tags]
+@(Book of Well-being)[No Tags, No Existing Notes Link]
 {#}{#}{#} %TimeOut% - Date Note Taken - Thought/Feeling/Side-Effect
 Note
 Additional thoughts
