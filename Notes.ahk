@@ -3,48 +3,89 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-::knote::
 
-FormatTime, TimeOut, , yyyyMMddHHmmss
+::inote::
 Send, 
 (
-@(Book of Knowledge)[No Tags, No Existing Notes Link, No Reference Links]
-{#}{#}{#} %TimeOut% - Data Note Taken - Concept/Idea
-
-Concept/Idea: description in actual sentences
+{#} Concept/Idea
+Description in actual sentences
 Additional thoughts
-
-{#}{#}{#}{#} Links To Existing Notes
-[No Link](Evernote link)
-
-{#}{#}{#}{#} References
-[No Web Link](http://weblink.com)
-[No Reference](http://evernotelink)
-(Bullet Journal Note Book, Page Number)
+***
+**Intellectus Links**
+[No Link](Evernote link) - Relationship Description (Contradiction, Rel)
+***
+**Reperio Links**
+[No Link](http://weblink.com)
 )
 return
 
-::ref::
+::rnote::
 Send, 
 (
-@(References)[No Tags]
-{#}{#}{#} Title
+{#} Title/Concept/Idea
+*Full Bibilography Citation*
+p. {#} Your words, literature questions answered, book description in 2 -3 sentences, etc.
+> Quote To Back It Up, if you want.
 
-{#}{#}{#}{#} Citation:
 
+***
+**Hard Copy Links**
+[If Exist](http://weblink.com)
 )
 return
 
-::wnote::
+::newnote::
 FormatTime, TimeOut, , yyyyMMddHHmmss
-Send, 
-(
-@(Book of Well-being)[No Tags, No Existing Notes Link]
-{#}{#}{#} %TimeOut% - Date Note Taken - Thought/Feeling/Side-Effect
-Note
-Additional thoughts
+Title = `"%TimeOut% - Title`"
+Send mknote %Title%{Enter}
+return
 
-{#}{#}{#}{#} Links To Existing Notes
-[No Link](Evernote link)
+!`::
+FormatTime, TimeOut, , yyyyMMddHHmmss
+Send %TimeOut%
+return
+
+::mlog::
+FormatTime, TimeOut, , yyyyMM
+FormatTime, Month, , MMMM
+setDate = "%Timeout% - %Month%"
+Send,
+(
+# %setDate%
+## Objective
+* Objective 1
+
+| Date | Day  | Event |
+| `:---- | `:---- | `:----- |
+| 1    | M    | Event Description and link |
+| 2    |      | Link Bullet Joplin Note.   |
+| 3    |      |                            |
+| 4    |      |                            |
+| 5    |      |                            |
+| 6    |      |                            |
+| 7    |      |                            |
+| 8    |      |                            |
+| 9    |      |                            |
+| 10   |      |                            |
+| 11   |      |                            |
+| 12   |      |                            |
+| 13   |      |                            |
+| 14   |      |                            |
+| 15   |      |                            |
+| 16   |      |                            |
+| 17   |      |                            |
+| 18   |      |                            |
+| 19   |      |                            |
+| 20   |      |                            |
+| 21   |      |                            |
+| 22   |      |                            |
+| 23   |      |                            |
+| 24   |      |                            |
+| 25   |      |                            |
+| 26   |      |                            |
+| 27   |      |                            |
+| 28   |      |                            |
+| 29   |      |                            |
+| 30   |      |                            |
 )
 return
