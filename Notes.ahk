@@ -48,11 +48,11 @@ return
 ::mlog::
 FormatTime, TimeOut, , yyyyMM
 FormatTime, Month, , MMMM
-setDate = "%Timeout% - %Month%"
+setDate = %Timeout% - %Month%
 Send,
 (
-# %setDate%
-## Objective
+{#} %setDate%
+{#}{#} Objective
 * Objective 1
 
 | Date | Day  | Event |
