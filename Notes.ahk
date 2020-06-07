@@ -11,8 +11,8 @@ Send,
 Description in actual sentences
 Additional thoughts
 ***
-**Intellectus Links**
-[No Link](Evernote link) - Relationship Description (Contradiction, Rel)
+**Omnibus Intellectum**
+[No Link](Joplin link) - Relationship Description (Contradiction, Rel)
 ***
 **Reperio Links**
 [No Link](http://weblink.com)
