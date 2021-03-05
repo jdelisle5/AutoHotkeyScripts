@@ -3,37 +3,6 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-
-::inote::
-Send, 
-(
-{#} Concept/Idea
-Description in actual sentences
-Additional thoughts
-***
-**Omnibus Intellectum**
-[No Link](Joplin link) - Relationship Description (Contradiction, Rel)
-***
-**Reperio Links**
-[No Link](http://weblink.com)
-)
-return
-
-::rnote::
-Send, 
-(
-{#} Title/Concept/Idea
-*Full Bibilography Citation*
-p. {#} Your words, literature questions answered, book description in 2 -3 sentences, etc.
-> Quote To Back It Up, if you want.
-
-
-***
-**Hard Copy Links**
-[If Exist](http://weblink.com)
-)
-return
-
 ::newnote::
 FormatTime, TimeOut, , yyyyMMddHHmmss
 Title = `"%TimeOut% - Title`"
@@ -88,4 +57,37 @@ Send,
 | 29   |      |                            |
 | 30   |      |                            |
 )
+return
+
+::mainmethod::
+var =
+(
+``````csharp
+class Program
+{{}
+	static void Main(string[] args)
+	{{}
+	{{}
+{}}
+);
+Send, `{ ;
+return
+
+::createlog::
+Sleep, 500
+InputBox, logDate, LogDate, "Enter the date in yyyyMM01 you would like to create logs for."
+FormatTime, OriginalMonth, %logDate%, MM
+loop {
+	FormatTime, Day, %logDate% , dddd
+	FormatTime, FullDate, %logDate%, yyyyMMdd
+	setdate = %FullDate% - %Day%
+	Send, 
+	(
+	^n%setdate%
+	)
+	Sleep, 900
+	EnvAdd, logDate, 1, days
+	FormatTime, CheckMonth, %logDate%, MM
+}until OriginalMonth != CheckMonth
+
 return
