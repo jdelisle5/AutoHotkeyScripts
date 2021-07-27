@@ -74,18 +74,24 @@ Send, `{ ;
 return
 
 ::createlog::
-Sleep, 500
+Sleep, 900
 InputBox, logDate, LogDate, "Enter the date in yyyyMM01 you would like to create logs for."
 FormatTime, OriginalMonth, %logDate%, MM
+FirstTime := True
 loop {
 	FormatTime, Day, %logDate% , dddd
 	FormatTime, FullDate, %logDate%, yyyyMMdd
 	setdate = %FullDate% - %Day%
-	Send, 
-	(
-	^n%setdate%
-	)
-	Sleep, 900
+	if(FirstTime) {
+		Send, %setDate%{Enter}
+		FirstTime := false
+		Sleep, 750
+ 	} else {
+	Send, ^n
+ 	Sleep, 750
+ 	Send, %setDate%{Enter}
+	Sleep, 750
+    }
 	EnvAdd, logDate, 1, days
 	FormatTime, CheckMonth, %logDate%, MM
 }until OriginalMonth != CheckMonth
