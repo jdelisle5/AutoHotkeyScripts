@@ -10,7 +10,7 @@ Send mknote %Title%{Enter}
 return
 
 !`::
-FormatTime, TimeOut, , yyyyMMddHHmmss
+FormatTime, TimeOut, , yyyyMMdd:HHmmss
 Send %TimeOut%
 return
 
@@ -97,3 +97,62 @@ loop {
 }until OriginalMonth != CheckMonth
 
 return
+
+!1::
+if WinActive("Joplin")
+{
+	SEND !+n
+	Sleep, 1000
+	Send {tab}
+}
+return
+!2::
+if WinActive("Joplin")
+{
+	SEND !^+n
+	Sleep, 300
+	Send Creative Idea
+	Sleep, 300
+	Send {tab}{Enter}
+	Sleep, 1200
+	Send {tab}
+}
+return
+!3::
+if WinActive("Joplin")
+{
+	SEND !^+t
+	Sleep, 300
+	Send ToDo Idea
+	Sleep, 300
+	Send {tab}{Enter}
+	Sleep, 1200
+	Send {tab}
+}
+return
+
+!4::
+if WinActive("Joplin")
+{
+	SEND !^+n
+	Sleep, 300
+	Send Lucid Note
+	Sleep, 300
+	Send {tab}{Enter}
+	Sleep, 1500
+	Send {tab}
+}
+Return
+
+!5::
+if WinActive("Joplin")
+{
+	SEND !^+n
+	Sleep, 300
+	Send Joseph Note
+	Sleep, 300
+	Send {tab}{Enter}
+	Sleep, 1500
+	Send {tab}
+}
+Return
