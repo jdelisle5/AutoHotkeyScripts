@@ -156,3 +156,11 @@ if WinActive("Joplin")
 	Send {tab}
 }
 Return
+
+
+!p::
+if WinActive("Joplin")
+{
+	SEND ⏱
+}
+Return
