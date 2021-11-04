@@ -81,7 +81,7 @@ FirstTime := True
 loop {
 	FormatTime, Day, %logDate% , dddd
 	FormatTime, FullDate, %logDate%, yyyyMMdd
-	setdate = %FullDate% - %Day%
+	setdate = %FullDate% 晝 %Day%
 	if(FirstTime) {
 		Send, %setDate%{Enter}
 		FirstTime := false
@@ -106,24 +106,13 @@ if WinActive("Joplin")
 	Send {tab}
 }
 return
+
 !2::
-if WinActive("Joplin")
-{
-	SEND !^+n
-	Sleep, 300
-	Send Creative Idea
-	Sleep, 300
-	Send {tab}{Enter}
-	Sleep, 1200
-	Send {tab}
-}
-return
-!3::
 if WinActive("Joplin")
 {
 	SEND !^+t
 	Sleep, 300
-	Send ToDo Idea
+	Send Idea
 	Sleep, 300
 	Send {tab}{Enter}
 	Sleep, 1200
@@ -158,9 +147,62 @@ if WinActive("Joplin")
 Return
 
 
-!p::
+!w::
 if WinActive("Joplin")
 {
-	SEND ⏱
+	FormatTime, TimeOut, , yyyyMMdd:HHmmss
+	SEND %TimeOut%⚒
+}
+return
+
+!a::
+if WinActive("Joplin")
+{
+	FormatTime, TimeOut, , yyyyMMdd:HHmmss
+	SEND %TimeOut%🗲
+}
+return
+
+!b::
+if WinActive("Joplin")
+{
+	FormatTime, TimeOut, , yyyyMMdd:HHmmss
+	SEND %TimeOut%⛱
+}
+return
+
+!i::
+if WinActive("Joplin")
+{
+	FormatTime, TimeOut, , yyyyMMdd:HHmmss
+	SEND %TimeOut%🧠
+}
+return
+
+!m::
+if WinActive("Joplin")
+{
+	FormatTime, TimeOut, , yyyyMMdd:HHmmss
+	SEND %TimeOut%🗫
+}
+return
+
+
+
+!c::
+if WinActive("Joplin")
+{
+	SEND ^n
+	Sleep, 300
+	SEND 20211102:163606📱
+}
+Return
+
+!r::
+if WinActive("Joplin")
+{
+	SEND ^n
+	Sleep, 300
+	SEND 20211102:163606📚
 }
 Return
