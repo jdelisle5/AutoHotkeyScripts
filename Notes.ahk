@@ -110,7 +110,7 @@ return
 !2::
 if WinActive("Joplin")
 {
-	SEND !^+t
+	SEND !^+n
 	Sleep, 300
 	Send Idea
 	Sleep, 300
