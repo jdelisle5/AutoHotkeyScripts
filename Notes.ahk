@@ -193,8 +193,9 @@ return
 if WinActive("Joplin")
 {
 	SEND ^n
+	FormatTime, TimeOut, , yyyyMMdd:HHmmss
 	Sleep, 300
-	SEND 20211102:163606📱
+	SEND %TimeOut%📱
 }
 Return
 
@@ -202,7 +203,31 @@ Return
 if WinActive("Joplin")
 {
 	SEND ^n
+	FormatTime, TimeOut, , yyyyMMdd:HHmmss
 	Sleep, 300
-	SEND 20211102:163606📚
+	SEND %TimeOut%📚
+}
+Return
+
+!h::
+if WinActive("Joplin")
+{
+	SEND ^p
+	FormatTime, Day, , dddd
+	FormatTime, FullDate, , yyyyMMdd
+	todate = %FullDate% 晝 %Day%
+	Sleep, 300
+	send %todate%
+	Sleep, 500
+	send {Enter}
+
+}
+Return
+
+!p::
+if WinActive("Joplin")
+{
+	FormatTime, TimeOut, , yyyyMMdd:HHmmss
+	SEND %TimeOut%🛑
 }
 Return
