@@ -97,7 +97,6 @@ loop {
 }until OriginalMonth != CheckMonth
 
 return
-
 !1::
 if WinActive("Joplin")
 {
@@ -147,43 +146,38 @@ if WinActive("Joplin")
 Return
 
 
-!w::
++!w::
 if WinActive("Joplin")
 {
-	FormatTime, TimeOut, , yyyyMMdd:HHmmss
-	SEND %TimeOut%⚒
+	SEND ⚒{Space}
 }
 return
 
-!a::
++!a::
 if WinActive("Joplin")
 {
-	FormatTime, TimeOut, , yyyyMMdd:HHmmss
-	SEND %TimeOut%🗲
+	SEND 🗲{Space}
 }
 return
 
-!b::
++!b::
 if WinActive("Joplin")
 {
-	FormatTime, TimeOut, , yyyyMMdd:HHmmss
-	SEND %TimeOut%⛱
+	SEND ⛱{Space}
 }
 return
 
-!i::
++!i::
 if WinActive("Joplin")
 {
-	FormatTime, TimeOut, , yyyyMMdd:HHmmss
-	SEND %TimeOut%🧠
+	SEND 🧠{Space}
 }
 return
 
-!m::
++!m::
 if WinActive("Joplin")
 {
-	FormatTime, TimeOut, , yyyyMMdd:HHmmss
-	SEND %TimeOut%🗫
+	SEND 🗫{Space}
 }
 return
 
@@ -195,7 +189,7 @@ if WinActive("Joplin")
 	SEND ^n
 	FormatTime, TimeOut, , yyyyMMdd:HHmmss
 	Sleep, 300
-	SEND %TimeOut%📱
+	SEND %TimeOut%📱{Space}
 }
 Return
 
@@ -205,7 +199,7 @@ if WinActive("Joplin")
 	SEND ^n
 	FormatTime, TimeOut, , yyyyMMdd:HHmmss
 	Sleep, 300
-	SEND %TimeOut%📚
+	SEND %TimeOut%📚{Space}
 }
 Return
 
@@ -224,10 +218,431 @@ if WinActive("Joplin")
 }
 Return
 
-!p::
++!x::
 if WinActive("Joplin")
 {
-	FormatTime, TimeOut, , yyyyMMdd:HHmmss
-	SEND %TimeOut%🛑
+	SEND >❌{Space}
 }
 Return
+
++!s::
+if WinActive("Joplin")
+{
+	SEND ⛔{Space}
+}
+Return
+
++!q::
+if WinActive("Joplin")
+{
+	SEND ❓{Space}
+}
+Return
+
++!o::
+if WinActive("Joplin")
+{
+	SEND >💻{Space}
+}
+Return
+
++!c::
+if WinActive("Joplin")
+{
+	SEND ✔{Space}
+}
+Return
+
+#IfWinActive Joplin
+::meta::
+(
+#### Metadata
+Roles:
+Descriptors:
+)
+Return
+
+#IfWinActive Joplin
+!d::
+SEND ^n
+Sleep 500
+_date := Date()
+day := Day()
+setdate = %_date% 晝 %day%
+SEND %setDate%
+Sleep, 750
+if (A_DDDD = "Monday")
+{
+Gosub, monday
+} else if (A_DDDD = "Tuesday") {
+Gosub, tuesday
+} else if (A_DDDD = "Wednesday") {
+Gosub, wednesday
+} else if (A_DDDD = "Thursday") {
+Gosub, thursday
+} else if (A_DDDD = "Friday") {
+Gosub, friday
+} else if (A_DDDD = "Saturday") {
+Gosub, saturday
+}
+Return
+
+::thursdaytask::
+SEND ^n
+Sleep 500
+_date := Date()
+day := Day()
+setdate = %_date% 晝 %day%
+SEND %setDate%
+Sleep, 750
+Gosub, thursday
+Return
+
+::fridaytask::
+SEND ^n
+Sleep 500
+_date := Date()
+day := Day()
+setdate = %_date% 晝 %day%
+SEND %setDate%
+Sleep, 750
+Gosub, friday
+Return
+
+::startmonth::
+SEND ^t
+Sleep, %A_YYYY%%A_MM% - Log Health Stats
+Sleep, 500
+SEND ^t
+Sleep, 500
+Send, %A_YYYY%%A_MM% - REI Planning and Budget^+b
+Sleep, 500
+Send, - [ ] Schedule With Lauren
+Return
+
+::startweek::
+Year := SubStr(A_YWeek, 1, 4)
+WeekNumber := SubStr(A_YWeek, -1)
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Goal - Writing - 3 Times A Week
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Goal - STTA - Meet With Steve 3 Times A Week
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Goal - Lift - 3 Times A Week
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Goal - Additional Cardio 2-3 Times A Week
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Goal - Journal - Title
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Goal - Meditate 70min
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Goal - Personal Budget Tracking And Relection
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Goal - REI Budget Tracking And Relection
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Goal Relection^+b
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Groceries
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Laundry
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Clean
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Cook Prep
+SEND ^t
+Sleep, 500
+SEND, %Year% Week %WeekNumber% Goal - 5 Hours of Development training {Enter}
+SEND, How did we do on our week goals? What got in our way?
+Return
+
+monday:
+Gosub, penmanship
+Sleep, 750
+Gosub, worldywise
+Sleep, 750
+Gosub, write
+Sleep, 750
+Gosub, meditate
+Sleep, 750
+Gosub, cardio
+Sleep, 750
+Gosub, secondexercise
+Sleep, 750
+Gosub, azurefundamentals
+Sleep, 750
+Gosub, fiction
+Sleep, 750
+Gosub, nonfiction
+Sleep, 750
+Gosub, cleanupnotes
+Sleep, 750
+Gosub, processtags
+Sleep, 750
+GoSub, STTA
+Sleep, 750
+GoSub, rei
+Sleep, 750
+GoSub, pack
+Return
+
+tuesday:
+Gosub, penmanship
+Sleep, 750
+Gosub, meditate
+Sleep, 750
+Gosub, lift
+Sleep, 750
+Gosub, secondexercise
+Sleep, 750
+Gosub, javascript
+Sleep, 750
+Gosub, fiction
+Sleep, 750
+Gosub, cleanupnotes
+Sleep, 750
+Gosub, processtags
+Sleep, 750
+GoSub, STTA
+Sleep, 750
+GoSub, rei
+Return
+
+wednesday:
+Gosub, penmanship
+Sleep, 750
+Gosub, meditate
+Sleep, 750
+Gosub, lift
+Sleep, 750
+Gosub, secondexercise
+Sleep, 750
+Gosub, javascript
+Sleep, 750
+Gosub, fiction
+Sleep, 750
+Gosub, cleanupnotes
+Sleep, 750
+Gosub, processtags
+Sleep, 750
+GoSub, rei
+Return
+
+thursday:
+Gosub, penmanship
+Sleep, 750
+Gosub, worldywise
+Sleep, 750
+Gosub, write
+Sleep, 750
+Gosub, meditate
+Sleep, 750
+Gosub, cardio
+Sleep, 750
+Gosub, secondexercise
+Sleep, 750
+Gosub, azurefundamentals
+Sleep, 750
+Gosub, fiction
+Sleep, 750
+Gosub, nonfiction
+Sleep, 750
+Gosub, cleanupnotes
+Sleep, 750
+Gosub, processtags
+Sleep, 750
+GoSub, rei
+Return
+
+friday:
+Gosub, penmanship
+Sleep, 750
+Gosub, meditate
+Sleep, 750
+Gosub, lift
+Sleep, 750
+Gosub, secondexercise
+Sleep, 750
+Gosub, javascript
+Sleep, 750
+Gosub, fiction
+Sleep, 750
+Gosub, cleanupnotes
+Sleep, 750
+Gosub, processtags
+Return
+
+saturday:
+Gosub, penmanship
+Sleep, 750
+Gosub, worldywise
+Sleep, 750
+Gosub, write
+Sleep, 750
+Gosub, meditate
+Sleep, 750
+Gosub, fiction
+Sleep, 750
+Gosub, STTA
+Sleep, 750
+Gosub, rei
+Return
+
+
+penmanship:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 𝔀 Penmanship 10min
+Return
+
+pack:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% - Pack Food and Clothes
+Return
+
+rei:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 🏘 Work on REI
+Return
+
+worldywise:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 𝔀 Worldy Wise 10min
+Return
+
+write:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 🖉 Write 30min
+Return
+
+meditate:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 🧘 Meditate 10min
+Return
+
+lift:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 🏋 Lift - title
+Return
+
+cardio:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 🏋 Steady State Cardio and Stretching
+Return
+
+secondexercise:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 🏋 Additional Exercise
+Return
+
+nonfiction:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 🕮 Nonfiction Reading 30min
+Return
+
+fiction:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 📖 Fiction Reading 30min
+Return
+
+azurefundamentals:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 🖧 Azure Fundamentals 60mins
+Return
+
+javascript:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 💻 Java Script 60mins
+Return
+
+cleanupnotes:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 🗄 Process 3 Fleeting Notes and Notes
+Return
+
+processtags:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 🗄 Process 3 tags
+Return
+
+STTA:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% 🗄 Work on STTA with Steve
+Return
+
+Timestamp()
+{
+FormatTime, TimeOut, , yyyyMMdd:HHmmss
+Return %TimeOut%
+}
+
+Date()
+{
+FormatTime, FullDate, %logDate%, yyyyMMdd
+Return %FullDate%
+}
+
+Day()
+{
+FormatTime, Day, %logDate% , dddd
+Return %Day%
+}
