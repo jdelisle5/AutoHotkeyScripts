@@ -253,6 +253,13 @@ if WinActive("Joplin")
 }
 Return
 
+::wtf::
+if WinActive("Joplin")
+{
+	SEND 😕{Space}
+}
+Return
+
 #IfWinActive Joplin
 ::meta::
 (
