@@ -253,12 +253,20 @@ if WinActive("Joplin")
 }
 Return
 
++!n::
+if WinActive("Joplin")
+{
+	SEND 📝{Space}
+}
+Return
+
 ::wtf::
 if WinActive("Joplin")
 {
 	SEND 😕{Space}
 }
 Return
+
 
 #IfWinActive Joplin
 ::meta::
@@ -368,7 +376,7 @@ SEND, %Year% Week %WeekNumber% Goal Relection^+b
 Sleep, 500
 SEND ^t
 Sleep, 500
-SEND ^t
+SEND Transform any guilt into curiosity, ask why each task might still be incomplete, Does it matter? Is it vital? What would happen if you didn't do it?
 Sleep, 500
 SEND, %Year% Week %WeekNumber% Groceries
 Sleep, 500
@@ -381,9 +389,6 @@ Sleep, 500
 SEND, %Year% Week %WeekNumber% Clean
 Sleep, 500
 SEND ^t
-Sleep, 500
-SEND ^t
-Sleep, 500
 SEND, %Year% Week %WeekNumber% Cook Prep
 SEND ^t
 Sleep, 500
@@ -391,7 +396,7 @@ SEND, %Year% Week %WeekNumber% Goal - 5 Hours of Development training {Enter}
 SEND, How did we do on our week goals? What got in our way?
 Return
 
-monday:
+tuesday:
 Gosub, penmanship
 Sleep, 750
 Gosub, worldywise
@@ -402,9 +407,7 @@ Gosub, meditate
 Sleep, 750
 Gosub, cardio
 Sleep, 750
-Gosub, secondexercise
-Sleep, 750
-Gosub, azurefundamentals
+Gosub, lightworkout
 Sleep, 750
 Gosub, fiction
 Sleep, 750
@@ -421,16 +424,16 @@ Sleep, 750
 GoSub, pack
 Return
 
-tuesday:
+monday:
 Gosub, penmanship
 Sleep, 750
 Gosub, meditate
 Sleep, 750
 Gosub, lift
 Sleep, 750
-Gosub, secondexercise
+Gosub, lightworkout
 Sleep, 750
-Gosub, javascript
+Gosub, developmentpractice
 Sleep, 750
 Gosub, fiction
 Sleep, 750
@@ -450,9 +453,9 @@ Gosub, meditate
 Sleep, 750
 Gosub, lift
 Sleep, 750
-Gosub, secondexercise
+Gosub, lightworkout
 Sleep, 750
-Gosub, javascript
+Gosub, developmentpractice
 Sleep, 750
 Gosub, fiction
 Sleep, 750
@@ -474,9 +477,7 @@ Gosub, meditate
 Sleep, 750
 Gosub, cardio
 Sleep, 750
-Gosub, secondexercise
-Sleep, 750
-Gosub, azurefundamentals
+Gosub, lightworkout
 Sleep, 750
 Gosub, fiction
 Sleep, 750
@@ -496,9 +497,9 @@ Gosub, meditate
 Sleep, 750
 Gosub, lift
 Sleep, 750
-Gosub, secondexercise
+Gosub, lightworkout
 Sleep, 750
-Gosub, javascript
+Gosub, developmentpractice
 Sleep, 750
 Gosub, fiction
 Sleep, 750
@@ -516,7 +517,9 @@ Gosub, write
 Sleep, 750
 Gosub, meditate
 Sleep, 750
-Gosub, fiction
+Gosub, cardio
+Sleep, 750
+Gosub, nonfiction
 Sleep, 750
 Gosub, STTA
 Sleep, 750
@@ -577,10 +580,10 @@ cardio:
 SEND ^t
 Sleep, 500
 timestamp := Date()
-Send %timestamp% 🏋 Steady State Cardio and Stretching
+Send %timestamp% 🚶‍♂️ Steady State Cardio and Stretching
 Return
 
-secondexercise:
+lightworkout:
 SEND ^t
 Sleep, 500
 timestamp := Date()
@@ -601,14 +604,7 @@ timestamp := Date()
 Send %timestamp% 📖 Fiction Reading 30min
 Return
 
-azurefundamentals:
-SEND ^t
-Sleep, 500
-timestamp := Date()
-Send %timestamp% 🖧 Azure Fundamentals 60mins
-Return
-
-javascript:
+developmentpractice:
 SEND ^t
 Sleep, 500
 timestamp := Date()
