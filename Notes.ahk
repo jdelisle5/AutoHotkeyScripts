@@ -239,6 +239,13 @@ if WinActive("Joplin")
 }
 Return
 
++!f::
+if WinActive("Joplin")
+{
+	SEND ✖ {Space}
+}
+Return
+
 +!o::
 if WinActive("Joplin")
 {
