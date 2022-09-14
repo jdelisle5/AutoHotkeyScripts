@@ -95,6 +95,83 @@ loop {
 	EnvAdd, logDate, 1, days
 	FormatTime, CheckMonth, %logDate%, MM
 }until OriginalMonth != CheckMonth
+return
+
+::jdate::
+if WinActive("Joplin")
+{
+	FormatTime, TimeOut, , yyyyMMdd
+	Send %TimeOut%{space}
+}
+return
+
+
+::jidea::
+if WinActive("Joplin")
+{
+	Send, 💡{space}
+}
+return
+
+::jtime::
+if WinActive("Joplin")
+{
+	FormatTime, TimeOut, , HHmmss
+	Send %TimeOut%
+}
+return
+
+::jdone::
+if WinActive("Joplin")
+{
+	FormatTime, TimeOut, , HHmmss
+	Send ✔ %TimeOut%
+}
+return
+
+::jperson::
+if WinActive("Joplin")
+{
+	Send, ⚲{space}
+}
+return
+
+::jgroup::
+if WinActive("Joplin")
+{
+	Send, ∴{space}
+}
+return
+
+::jevent::
+if WinActive("Joplin")
+{
+	Send, ⚬{space}
+}
+return
+
+::jplace::
+if WinActive("Joplin")
+{
+	Send, ⊙{space}
+}
+return
+
+::jrole::
+if WinActive("Joplin")
+{
+	Send, ⊝{space}
+}
+return
+
+::jtestfail::
+if WinActive("Joplin")
+{
+	Send, 🧪❌{space}
+}
+return
+
+
 
 return
 !1::
@@ -145,43 +222,62 @@ if WinActive("Joplin")
 }
 Return
 
-
-+!w::
-if WinActive("Joplin")
-{
-	SEND ⚒{Space}
-}
-return
-
-+!a::
-if WinActive("Joplin")
-{
-	SEND 🗲{Space}
-}
-return
-
-+!b::
-if WinActive("Joplin")
-{
-	SEND ⛱{Space}
-}
-return
-
-+!i::
+::jlogic::
 if WinActive("Joplin")
 {
 	SEND 🧠{Space}
 }
 return
 
-+!m::
+::jdoing::
+if WinActive("Joplin")
+{
+	SEND ⚒{Space}
+}
+return
+
+
+::jimportant::
+if WinActive("Joplin")
+{
+	SEND ❗{Space}
+}
+return
+
+::janswer::
+if WinActive("Joplin")
+{
+	SEND 🅰{Space}
+}
+return
+
+::jtodo::
+if WinActive("Joplin")
+{
+	SEND - `[ `]{space}
+}
+return
+
+::jbreak::
+if WinActive("Joplin")
+{
+	SEND ⛱{Space}
+}
+return
+
+::jinsight::
+if WinActive("Joplin")
+{
+	SEND 🗲{Space}
+}
+return
+
+::jmeeting::
 if WinActive("Joplin")
 {
 	SEND 🗫{Space}
 }
 return
-
-
 
 !c::
 if WinActive("Joplin")
@@ -203,6 +299,14 @@ if WinActive("Joplin")
 }
 Return
 
+::jjira::
+if WinActive("Joplin")
+{
+	SEND 🔷{space}
+}
+Return
+
+
 !h::
 if WinActive("Joplin")
 {
@@ -218,54 +322,97 @@ if WinActive("Joplin")
 }
 Return
 
-+!x::
+::jerror::
 if WinActive("Joplin")
 {
 	SEND >❌{Space}
 }
 Return
 
-+!s::
+::jissue::
 if WinActive("Joplin")
 {
-	SEND ⛔{Space}
+	SEND 🚩{Space}
 }
 Return
 
-+!q::
+::jstart::
+if WinActive("Joplin")
+{
+	SEND ⏸{Space}
+}
+Return
+
+::jstart::
+if WinActive("Joplin")
+{
+	SEND ⏱{Space}
+}
+Return
+
+::jquestion::
 if WinActive("Joplin")
 {
 	SEND ❓{Space}
 }
 Return
 
-+!f::
+::jfail::
 if WinActive("Joplin")
 {
-	SEND ✖ {Space}
+	SEND ✖{Space}
 }
 Return
 
-+!o::
+::joutput::
 if WinActive("Joplin")
 {
 	SEND >💻{Space}
 }
 Return
 
-+!c::
+::jdart::
+if WinActive("Joplin")
+{
+	SEND 🎯{Space}
+}
+Return
+
+::jpen::
+if WinActive("Joplin")
+{
+	SEND 🖋{space}
+}
+Return
+
+::jcheck::
 if WinActive("Joplin")
 {
 	SEND ✔{Space}
 }
 Return
 
-+!n::
+::jresolved::
+if WinActive("Joplin")
+{
+	SEND ✅{Space}
+}
+Return
+
+::jsection::
+if WinActive("Joplin")
+{
+	SEND §{Space}
+}
+Return
+
+::jnote::
 if WinActive("Joplin")
 {
 	SEND 📝{Space}
 }
 Return
+
 
 ::wtf::
 if WinActive("Joplin")
@@ -276,7 +423,7 @@ Return
 
 
 #IfWinActive Joplin
-::meta::
+::jmeta::
 (
 #### Metadata
 Roles:
@@ -309,6 +456,13 @@ Gosub, saturday
 }
 Return
 
+::newday::
+_date := Date()
+day := Day()
+setdate = %_date% 晝 %day%
+SEND %setDate%
+return
+
 ::thursdaytask::
 SEND ^n
 Sleep 500
@@ -340,6 +494,12 @@ Sleep, 500
 Send, %A_YYYY%%A_MM% - REI Planning and Budget^+b
 Sleep, 500
 Send, - [ ] Schedule With Lauren
+Return
+
+
+::Weeknumber::
+WeekNumber := SubStr(A_YWeek, -1)
+SEND Week %WeekNumber% Goals
 Return
 
 ::startweek::
@@ -406,9 +566,13 @@ Return
 tuesday:
 Gosub, penmanship
 Sleep, 750
+Gosub, nameyourday
+Sleep, 750
 Gosub, worldywise
 Sleep, 750
 Gosub, write
+Sleep, 750
+Gosub, finance
 Sleep, 750
 Gosub, meditate
 Sleep, 750
@@ -417,8 +581,6 @@ Sleep, 750
 Gosub, lightworkout
 Sleep, 750
 Gosub, fiction
-Sleep, 750
-Gosub, nonfiction
 Sleep, 750
 Gosub, cleanupnotes
 Sleep, 750
@@ -433,6 +595,8 @@ Return
 
 monday:
 Gosub, penmanship
+Sleep, 750
+Gosub, nameyourday
 Sleep, 750
 Gosub, meditate
 Sleep, 750
@@ -456,6 +620,8 @@ Return
 wednesday:
 Gosub, penmanship
 Sleep, 750
+Gosub, nameyourday
+Sleep, 750
 Gosub, meditate
 Sleep, 750
 Gosub, lift
@@ -476,9 +642,13 @@ Return
 thursday:
 Gosub, penmanship
 Sleep, 750
+Gosub, nameyourday
+Sleep, 750
 Gosub, worldywise
 Sleep, 750
 Gosub, write
+Sleep, 750
+Gosub, finance
 Sleep, 750
 Gosub, meditate
 Sleep, 750
@@ -487,8 +657,6 @@ Sleep, 750
 Gosub, lightworkout
 Sleep, 750
 Gosub, fiction
-Sleep, 750
-Gosub, nonfiction
 Sleep, 750
 Gosub, cleanupnotes
 Sleep, 750
@@ -499,6 +667,8 @@ Return
 
 friday:
 Gosub, penmanship
+Sleep, 750
+Gosub, nameyourday
 Sleep, 750
 Gosub, meditate
 Sleep, 750
@@ -520,13 +690,13 @@ Gosub, penmanship
 Sleep, 750
 Gosub, worldywise
 Sleep, 750
+Gosub, nameyourday
+Sleep, 750
 Gosub, write
 Sleep, 750
 Gosub, meditate
 Sleep, 750
 Gosub, cardio
-Sleep, 750
-Gosub, nonfiction
 Sleep, 750
 Gosub, STTA
 Sleep, 750
@@ -580,7 +750,7 @@ lift:
 SEND ^t
 Sleep, 500
 timestamp := Date()
-Send %timestamp% 🏋 Lift - title
+Send %timestamp% 🏋 Lift
 Return
 
 cardio:
@@ -615,7 +785,7 @@ developmentpractice:
 SEND ^t
 Sleep, 500
 timestamp := Date()
-Send %timestamp% 💻 Java Script 60mins
+Send %timestamp% 💻 Development Practice 60mins
 Return
 
 cleanupnotes:
@@ -637,6 +807,38 @@ SEND ^t
 Sleep, 500
 timestamp := Date()
 Send %timestamp% 🗄 Work on STTA with Steve
+Return
+
+nameyourday:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% - Name Your Day
+Return
+
+::dailytask::
+SEND, 
+(
+{#} Daily Task
+- [ ] Penmanship 10 Min
+Art of Styling Sentences 20 mins
+Wordly Wise 20 mins
+Development Practice
+Excersice
+Process Tags, Old Notes, Organize 30 mins
+Budget
+Fiction Reading
+Non Fiction Reading
+Name Your Day
+Journal
+)
+Return
+
+finance:
+SEND ^t
+Sleep, 500
+timestamp := Date()
+Send %timestamp% - Work on Finances
 Return
 
 Timestamp()
